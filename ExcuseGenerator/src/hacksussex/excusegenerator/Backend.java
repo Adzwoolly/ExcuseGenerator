@@ -59,7 +59,7 @@ public class Backend {
 		String[] words = problem.split(" ");
 		//Higher number is less common
 		int leastCommonRanking = 0;
-		String leastCommonWord = "[Error]";
+		String leastCommonWord = null;
 		
 		for(String word : words){
 			String formattedWord = formatWord(word);
@@ -73,7 +73,7 @@ public class Backend {
 			}
 		}
 		
-		if(leastCommonWord.equals("[Error]")){
+		if(leastCommonWord != null){
 			leastCommonWord = randomExcuse();
 		}
 		
