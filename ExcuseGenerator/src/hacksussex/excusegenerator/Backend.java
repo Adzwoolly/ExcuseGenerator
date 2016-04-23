@@ -6,6 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Generates excuses from a given string
+ * @author Adam Woollen
+ * @author Jamie Ingram
+ *
+ */
 public class Backend {
 	private static String[] randomExcuses;
 	private static int randomExcuseCount = 0;
@@ -27,14 +33,11 @@ public class Backend {
 			reader.close();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("The word rankings file could not be found.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Wel, something went wrong with reading the file...");
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Euurghh!  Did you break the word ranking file?");
 		}
 		
 		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
