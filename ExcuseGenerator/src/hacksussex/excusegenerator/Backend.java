@@ -9,23 +9,14 @@ import java.util.HashMap;
 public class Backend {
 	private static String[] randomExcuses;
 	private static int randomExcuseCount = 0;
-	
-	public static void main(String[] args){
-		Backend b = new Backend();
-		b.getExcuse("Do you want to go to Hack Sussex?");
-		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
-				"As much as I love to, the reason I can't do that isn't you - it's me.",
-				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
-		for(int i = 0; i < 10; i++){
-			System.out.println(randomExcuse());
-		}
-	}
-	
-	HashMap<String, Integer> common = new HashMap<String, Integer>();
+	private static HashMap<String, Integer> common;
 	
 	public Backend(){
 		String wordRankings = "WordRankings.csv";
-		
+		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
+				"As much as I love to, the reason I can't do that isn't you - it's me.",
+				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
+		common = new HashMap<String, Integer>();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(wordRankings));
 			String line;
@@ -48,13 +39,13 @@ public class Backend {
 		}
 	}
 	
+	
 	/**
 	 * Generates an excuse
 	 * @param problem The user inputted situation for which an excuse is needed
 	 * @return An excuse
 	 */
 	public String getExcuse(String problem){
-		
 		String[] words = problem.split(" ");
 		//Higher number is less common
 		int leastCommonRanking = 0;

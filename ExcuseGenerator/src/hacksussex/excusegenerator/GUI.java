@@ -15,6 +15,7 @@ import javax.swing.*;
 
 public class GUI {
 	private static JFrame mainframe;
+	private static Backend bk;
 	
 	public static void main(String args[]){
 		//Construct components
@@ -35,10 +36,12 @@ public class GUI {
 		JPanel outputContainer = new JPanel(new BorderLayout());
 		JPanel buttonContainer = new JPanel(new FlowLayout());
 		ButtonGroup modeButtons = new ButtonGroup();
+		bk = new Backend();
 		
 		//Set properties of classes within the GUI
 		mainframe.setPreferredSize(new Dimension(600, 350));
 		mainframe.setMinimumSize(new Dimension());
+		mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		devMode.setEnabled(false);
 		devMode.setToolTipText("Runs the program in 'Developer Mode'");
 		normalMode.setToolTipText("Runs the program in 'Normal Mode'");
@@ -113,7 +116,6 @@ public class GUI {
 	
 	private static String generateExcuse(String problem){
 		System.out.println(problem);
-		Backend bk = new Backend();
 		return bk.getExcuse(problem);
 	}
 	
