@@ -50,11 +50,10 @@ public class Backend {
 		String[] words = problem.split(" ");
 		//Higher number is less common
 		int leastCommonRanking = 0;
-		String leastCommonWord = "[failed]";
+		String leastCommonWord = "[Error]";
 		
 		for(String word : words){
 			String formattedWord = formatWord(word);
-			System.out.println(formattedWord);
 			
 			Integer ranking = common.get(formattedWord);
 			if(ranking != null){
@@ -62,9 +61,11 @@ public class Backend {
 					leastCommonRanking = ranking;
 					leastCommonWord = formattedWord;
 				}
-			} else{
-				System.out.println("Not in top 5000");
 			}
+		}
+		
+		if(leastCommonWord.equals("[Error]")){
+			leastCommonWord = randomExcuse();
 		}
 		
 		System.out.println("Least common word: " + leastCommonWord);
@@ -82,6 +83,20 @@ public class Backend {
 		word = word.replaceAll("[!\"#$%&'()*+,\\-./:;<=>?@[\\\\]^_`{|}~]", "");
 		word = word.toLowerCase();
 		return word;
+	}
+	
+	int count = 0;
+	
+	private String randomExcuse(){
+		String[] excuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
+										"excuse 2",
+										"excuse 3"};
+		if(count < excuses.length - 1){
+			count++;
+		} else{
+			count = 0;
+		}
+		return excuses[count];
 	}
 
 }
