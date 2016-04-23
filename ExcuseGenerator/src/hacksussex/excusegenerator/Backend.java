@@ -8,9 +8,12 @@ import java.util.HashMap;
 
 public class Backend {
 	
-	HashMap<String, Integer> common = new HashMap<String, Integer>();
+	public static void main(String[] args){
+		Backend b = new Backend();
+		b.getExcuse("Do you want to go to Hack Sussex?");
+	}
 	
-	String problem = "";
+	HashMap<String, Integer> common = new HashMap<String, Integer>();
 	
 	public Backend(){
 		String wordRankings = "WordRankings.csv";
@@ -43,26 +46,42 @@ public class Backend {
 	 * @return An excuse
 	 */
 	public String getExcuse(String problem){
-		this.problem = problem;
 		
 		String[] words = problem.split(" ");
 		//Higher number is less common
 		int leastCommonRanking = 0;
-		String leastCommonWord = "";
+		String leastCommonWord = "[failed]";
 		
 		for(String word : words){
-			Integer ranking = common.get(word);
+			String formattedWord = formatWord(word);
+			System.out.println(formattedWord);
+			
+			Integer ranking = common.get(formattedWord);
 			if(ranking != null){
 				if(ranking > leastCommonRanking){
 					leastCommonRanking = ranking;
-					leastCommonWord = word;
+					leastCommonWord = formattedWord;
 				}
+			} else{
+				System.out.println("Not in top 5000");
 			}
 		}
 		
 		System.out.println("Least common word: " + leastCommonWord);
 		
-		return null;
+		return leastCommonWord;
+	}
+	
+	/**
+	 * Formats the given string so it is suitable to search in the hashmap.
+	 * Converts string to lowercase and removes punctuation.
+	 * @param word The word/string you wish to format
+	 * @return The formatted word/string, suitable for searching the hashmap
+	 */
+	private String formatWord(String word){
+		word = word.replaceAll("[!\"#$%&'()*+,\\-./:;<=>?@[\\\\]^_`{|}~]", "");
+		word = word.toLowerCase();
+		return word;
 	}
 
 }
