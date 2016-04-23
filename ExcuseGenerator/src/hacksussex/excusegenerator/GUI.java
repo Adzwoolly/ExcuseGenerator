@@ -42,7 +42,7 @@ public class GUI {
 		devMode.setEnabled(false);
 		devMode.setToolTipText("Runs the program in 'Developer Mode'");
 		normalMode.setToolTipText("Runs the program in 'Normal Mode'");
-		input.setText("Why isn't there already an excuse already?");
+		input.setText("Why isn't there already an excuse?");
 		output.setEditable(false);
 		output.setText("I haven't made an excuse yet because my cat ate it...");
 		quitButton.setToolTipText("Exits the program");

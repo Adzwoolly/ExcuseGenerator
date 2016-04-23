@@ -6,24 +6,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
-/**
- * The main backend class for generating excuses
- * @author Adam Woollen
- *
- */
 public class Backend {
+	private static String[] randomExcuses;
+	private static int randomExcuseCount = 0;
 	
 	public static void main(String[] args){
 		Backend b = new Backend();
 		b.getExcuse("Do you want to go to Hack Sussex?");
+		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
+				"As much as I love to, the reason I can't do that isn't you - it's me.",
+				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
+		for(int i = 0; i < 10; i++){
+			System.out.println(randomExcuse());
+		}
 	}
 	
 	HashMap<String, Integer> common = new HashMap<String, Integer>();
 	
-	/**
-	 * Constructor for the backend that generates excuses.
-	 * Loads a list of words ranked by frequency into a hashmap.
-	 */
 	public Backend(){
 		String wordRankings = "WordRankings.csv";
 		
@@ -93,19 +92,14 @@ public class Backend {
 		word = word.toLowerCase();
 		return word;
 	}
-	
-	int count = 0;
-	
-	private String randomExcuse(){
-		String[] excuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
-										"As much as I love to, the reason I can't do that isn't you - it's me.",
-										"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
-		if(count < excuses.length - 1){
-			count++;
+		
+	private static String randomExcuse(){
+		if(randomExcuseCount < randomExcuses.length - 1){
+			randomExcuseCount++;
 		} else{
-			count = 0;
+			randomExcuseCount = 0;
 		}
-		return excuses[count];
+		return randomExcuses[randomExcuseCount];
 	}
 
 }
