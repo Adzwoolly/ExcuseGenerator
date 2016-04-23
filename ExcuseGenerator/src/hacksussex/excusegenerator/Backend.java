@@ -51,10 +51,12 @@ public class Backend {
 		String leastCommonWord = "";
 		
 		for(String word : words){
-			int ranking = common.get(word);
-			if(ranking > leastCommonRanking){
-				leastCommonRanking = ranking;
-				leastCommonWord = word;
+			Integer ranking = common.get(word);
+			if(ranking != null){
+				if(ranking > leastCommonRanking){
+					leastCommonRanking = ranking;
+					leastCommonWord = word;
+				}
 			}
 		}
 		
