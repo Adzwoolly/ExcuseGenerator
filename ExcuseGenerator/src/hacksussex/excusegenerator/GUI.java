@@ -92,6 +92,7 @@ public class GUI {
 				output.setText(generateExcuse(input.getText()));
 			}
 		});
+		
 		mainframe.pack();
 		mainframe.setVisible(true);
 	}

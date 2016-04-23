@@ -89,8 +89,8 @@ public class Backend {
 	
 	private String randomExcuse(){
 		String[] excuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
-										"excuse 2",
-										"excuse 3"};
+										"As much as I love to, the reason I can't do that isn't you - it's me.",
+										"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
 		if(count < excuses.length - 1){
 			count++;
 		} else{
