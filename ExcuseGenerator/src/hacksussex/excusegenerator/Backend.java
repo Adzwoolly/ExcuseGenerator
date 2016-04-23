@@ -6,6 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * The main backend class for generating excuses
+ * @author Adam Woollen
+ *
+ */
 public class Backend {
 	
 	public static void main(String[] args){
@@ -15,6 +20,10 @@ public class Backend {
 	
 	HashMap<String, Integer> common = new HashMap<String, Integer>();
 	
+	/**
+	 * Constructor for the backend that generates excuses.
+	 * Loads a list of words ranked by frequency into a hashmap.
+	 */
 	public Backend(){
 		String wordRankings = "WordRankings.csv";
 		
