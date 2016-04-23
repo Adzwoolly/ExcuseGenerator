@@ -6,36 +6,46 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Generates excuses from a given string
+ * @author Adam Woollen
+ * @author Jamie Ingram
+ *
+ */
 public class Backend {
 	private static String[] randomExcuses;
 	private static int randomExcuseCount = 0;
-	private static HashMap<String, Integer> common;
+	private HashMap<String, Integer> wordFrequencyRankings;
 	
 	public Backend(){
 		String wordRankings = "WordRankings.csv";
 		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
 				"As much as I love to, the reason I can't do that isn't you - it's me.",
 				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
-		common = new HashMap<String, Integer>();
+		wordFrequencyRankings = new HashMap<String, Integer>();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(wordRankings));
 			String line;
 			while((line = reader.readLine()) != null){
 				String[] values = line.split(",");
-				common.put(values[0], Integer.parseInt(values[1]));
+				wordFrequencyRankings.put(values[0], Integer.parseInt(values[1]));
 			}
 			
 			reader.close();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("The word rankings file could not be found.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Wel, something went wrong with reading the file...");
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Euurghh!  Did you break the word ranking file?");
+		}
+		
+		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
+				"As much as I love to, the reason I can't do that isn't you - it's me.",
+				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
+		for(int i = 0; i < 10; i++){
+			System.out.println(randomExcuse());
 		}
 	}
 	
@@ -49,12 +59,12 @@ public class Backend {
 		String[] words = problem.split(" ");
 		//Higher number is less common
 		int leastCommonRanking = 0;
-		String leastCommonWord = "[Error]";
+		String leastCommonWord = null;
+		String response = null;
 		
 		for(String word : words){
 			String formattedWord = formatWord(word);
-			
-			Integer ranking = common.get(formattedWord);
+			Integer ranking = wordFrequencyRankings.get(formattedWord);
 			if(ranking != null){
 				if(ranking > leastCommonRanking){
 					leastCommonRanking = ranking;
@@ -63,13 +73,13 @@ public class Backend {
 			}
 		}
 		
-		if(leastCommonWord.equals("[Error]")){
-			leastCommonWord = randomExcuse();
+		if(leastCommonWord == null){
+			response = randomExcuse();
 		}
 		
-		System.out.println("Least common word: " + leastCommonWord);
+		System.out.println("Response " + response);
 		
-		return leastCommonWord;
+		return response;
 	}
 	
 	/**
