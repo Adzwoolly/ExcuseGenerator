@@ -10,18 +10,8 @@ public class Backend {
 	private static String[] randomExcuses;
 	private static int randomExcuseCount = 0;
 	
-	public static void main(String[] args){
-		Backend b = new Backend();
-		b.getExcuse("Do you want to go to Hack Sussex?");
-		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
-				"As much as I love to, the reason I can't do that isn't you - it's me.",
-				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
-		for(int i = 0; i < 10; i++){
-			System.out.println(randomExcuse());
-		}
-	}
 	
-	HashMap<String, Integer> common = new HashMap<String, Integer>();
+	HashMap<String, Integer> wordFrequencyRankings = new HashMap<String, Integer>();
 	
 	public Backend(){
 		String wordRankings = "WordRankings.csv";
@@ -31,7 +21,7 @@ public class Backend {
 			String line;
 			while((line = reader.readLine()) != null){
 				String[] values = line.split(",");
-				common.put(values[0], Integer.parseInt(values[1]));
+				wordFrequencyRankings.put(values[0], Integer.parseInt(values[1]));
 			}
 			
 			reader.close();
@@ -45,6 +35,13 @@ public class Backend {
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		
+		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
+				"As much as I love to, the reason I can't do that isn't you - it's me.",
+				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
+		for(int i = 0; i < 10; i++){
+			System.out.println(randomExcuse());
 		}
 	}
 	
@@ -63,7 +60,7 @@ public class Backend {
 		for(String word : words){
 			String formattedWord = formatWord(word);
 			
-			Integer ranking = common.get(formattedWord);
+			Integer ranking = wordFrequencyRankings.get(formattedWord);
 			if(ranking != null){
 				if(ranking > leastCommonRanking){
 					leastCommonRanking = ranking;
