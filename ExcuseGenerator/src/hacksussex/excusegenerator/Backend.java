@@ -22,7 +22,7 @@ public class Backend {
 		wordInfo = new HashMap<String, Word>();
 		
 		//The file containing words and their frequencies
-		String wordRankings = "WordRankings.csv";
+		String wordRankings = "WordRankings.txt";
 		
 		try {
 			//Read the word frequencies file line by line
@@ -31,9 +31,14 @@ public class Backend {
 			while((line = reader.readLine()) != null){
 				//It's a comma separated file, so split by comma to
 				//Separate the word and it's frequency rank.
-				String[] values = line.split(",");
+				String[] values = line.split("\t");
 				//Insert the values into a HashMap to be used later
-				Word word = new Word(Integer.parseInt(values[1]), values[2]);
+				Word word;
+				if(values.length > 2){
+					word = new Word(Integer.parseInt(values[1]), values[2]);
+				}else{
+					word = new Word(Integer.parseInt(values[1]), null);
+				}
 				wordInfo.put(values[0], word);
 			}
 			
@@ -72,8 +77,8 @@ public class Backend {
 			//format the word to be compatible with the HashMap
 			String formattedWord = formatWord(word);
 			Word rankedWord = wordInfo.get(formattedWord);
-			Integer ranking = rankedWord.getFrequency();
-			if(ranking != null){
+			if(rankedWord != null){
+				Integer ranking = rankedWord.getFrequency();
 				//If this word is less common than the least common so far
 				if(ranking > leastCommonRanking){
 					//Set it to be the new least common
