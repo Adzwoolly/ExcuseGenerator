@@ -78,9 +78,8 @@ public class Backend {
 			String formattedWord = formatWord(word);
 			Word rankedWord = wordInfo.get(formattedWord);
 			if(rankedWord != null){
-				Integer ranking = rankedWord.getFrequency();
 				//If this word is less common than the least common so far
-				if(ranking > leastCommonWord.getFrequency()){
+				if(rankedWord.getFrequency() > leastCommonWord.getFrequency()){
 					//Set it to be the new least common
 					leastCommonWord = rankedWord;
 					System.out.println(formattedWord + " is the least common word!");

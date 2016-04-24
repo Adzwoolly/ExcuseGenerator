@@ -159,7 +159,7 @@ turn	170
 problem	171	"If you have n problems, I have 10n."
 every	172	
 start	173	
-hand	174	
+hand	174	"No sorry, I have more important things to do with my hand."
 might	175	
 American	176	No.
 show	177	
@@ -176,24 +176,24 @@ system	191
 each	192	
 right	193	
 program	194	" I coded a sick program in HTML once, maybe I could help with your complex programming problem."
-hear	195	
+hear	195	"I would love to but, my ears are already bleeding from last time."
 question	197	
 during	198	
 play	200	
-government	201	
+government	201	[REDACTED]
 run	202	
-small	203	
+small	203	Small just doesn't do it for me.
 number	204	
 off	205	
 always	206	
 move	207	
-night	209	
+night	209	That's past my bedtime
 live	210	
 Mr	211	
 point	212	
 believe	213	
 hold	214	
-today	215	
+today	215	How about tomorrow?
 bring	216	
 happen	217	
 next	218	
