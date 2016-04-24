@@ -21,7 +21,7 @@ public class Backend {
 		wordFrequencyRankings = new HashMap<String, Integer>();
 		
 		//The file containing words and their frequencies
-		String wordRankings = "WordRankings.csv";
+		String wordRankings = "WordRankings.txt";
 		
 		try {
 			//Read the word frequencies file line by line
@@ -30,9 +30,12 @@ public class Backend {
 			while((line = reader.readLine()) != null){
 				//It's a comma separated file, so split by comma to
 				//Separate the word and it's frequency rank.
-				String[] values = line.split(",");
+				String[] values = line.split("\t");
 				//Insert the values into a HashMap to be used later
 				wordFrequencyRankings.put(values[0], Integer.parseInt(values[1]));
+				if(values.length > 2){
+					System.out.print(values[2]);
+				}
 			}
 			
 			reader.close();
