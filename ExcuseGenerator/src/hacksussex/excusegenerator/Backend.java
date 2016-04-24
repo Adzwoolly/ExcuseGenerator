@@ -47,7 +47,7 @@ public class Backend {
 		} catch (FileNotFoundException e) {
 			System.out.println("The word rankings file could not be found.");
 		} catch (IOException e) {
-			System.out.println("Wel, something went wrong with reading the file...");
+			System.out.println("Well, something went wrong with reading the file...");
 		} catch (NumberFormatException e) {
 			System.out.println("Euurghh!  Did you break the word ranking file?");
 		}
