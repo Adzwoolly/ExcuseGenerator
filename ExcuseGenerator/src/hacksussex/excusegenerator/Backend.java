@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -74,39 +76,25 @@ public class Backend {
 	public String getExcuse(String problem){
 		//Split the given sentence into an array of words
 		String[] words = problem.split(" ");
-		//String leastCommonWord = null;
-		String response = null;
 		
-		Word leastCommonWord = new Word(0, response);
+		ArrayList<Word> indexedWords = new ArrayList<Word>();
 		
-		//Loop through all words inputted by user, determining which is least common
 		for(String word : words){
-			//format the word to be compatible with the HashMap
 			String formattedWord = formatWord(word);
 			Word rankedWord = wordInfo.get(formattedWord);
 			if(rankedWord != null){
-				//If this word is less common than the least common so far
-				if(rankedWord.getFrequency() > leastCommonWord.getFrequency()){
-					//Set it to be the new least common
-					leastCommonWord = rankedWord;
-					System.out.println(formattedWord + " is the least common word!");
+				if(rankedWord.getExcuse() != null){
+					indexedWords.add(rankedWord);
 				}
 			}
 		}
-		//If none of the user defined words were in the rankings list, use a random excuse
-		if(leastCommonWord.getFrequency() == 0){
-			response = randomExcuse();
+		Collections.sort(indexedWords);
+		
+		if(indexedWords.size() != 0){
+			return indexedWords.get(0).getExcuse();
 		} else{
-			if(leastCommonWord.getExcuse() != null){
-				response = leastCommonWord.getExcuse();
-			} else{
-				response = randomExcuse();
-			}
+			return randomExcuse();
 		}
-		
-		System.out.println("Response: " + response);
-		
-		return response;
 	}
 	
 	/**

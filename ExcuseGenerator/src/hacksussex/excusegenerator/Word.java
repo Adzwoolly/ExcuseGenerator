@@ -1,11 +1,13 @@
 package hacksussex.excusegenerator;
 
+import java.util.Comparator;
+
 /** Class for containing information about each word.
  * 
  * @author JRIngram
  * @version 24/04/2016
  */
-public class Word {
+public class Word implements Comparator<Word>, Comparable<Word>{
 	private String excuse;
 	private int frequency;
 	
@@ -35,6 +37,15 @@ public class Word {
 	 */
 	public String getExcuse(){
 		return excuse;
+	}
+	
+	public int compare(Word w1, Word w2){
+		return w1.getFrequency() - w2.getFrequency();
+	}
+
+	@Override
+	public int compareTo(Word w) {
+		return frequency - w.getFrequency();
 	}
 
 }
