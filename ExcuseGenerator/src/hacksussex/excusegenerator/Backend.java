@@ -15,10 +15,11 @@ import java.util.HashMap;
 public class Backend {
 	private static String[] randomExcuses;
 	private static int randomExcuseCount = 0;
-	private HashMap<String, Integer> wordFrequencyRankings;
+	private HashMap<String,Word> wordInfo;
+	
 	
 	public Backend(){
-		wordFrequencyRankings = new HashMap<String, Integer>();
+		wordInfo = new HashMap<String, Word>();
 		
 		//The file containing words and their frequencies
 		String wordRankings = "WordRankings.csv";
@@ -32,7 +33,8 @@ public class Backend {
 				//Separate the word and it's frequency rank.
 				String[] values = line.split(",");
 				//Insert the values into a HashMap to be used later
-				wordFrequencyRankings.put(values[0], Integer.parseInt(values[1]));
+				Word word = new Word(Integer.parseInt(values[1]), values[2]);
+				wordInfo.put(values[0], word);
 			}
 			
 			reader.close();
@@ -52,7 +54,6 @@ public class Backend {
 		
 	}
 	
-	
 	/**
 	 * Generates an excuse
 	 * @param problem The user inputted situation for which an excuse is needed
@@ -70,7 +71,8 @@ public class Backend {
 		for(String word : words){
 			//format the word to be compatible with the HashMap
 			String formattedWord = formatWord(word);
-			Integer ranking = wordFrequencyRankings.get(formattedWord);
+			Word rankedWord = wordInfo.get(formattedWord);
+			Integer ranking = rankedWord.getFrequency();
 			if(ranking != null){
 				//If this word is less common than the least common so far
 				if(ranking > leastCommonRanking){

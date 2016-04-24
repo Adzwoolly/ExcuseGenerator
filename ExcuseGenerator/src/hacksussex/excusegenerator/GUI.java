@@ -6,8 +6,6 @@ import javax.swing.*;
 
 /** GUI for the Excuse Generator.
  * 
- * TODO: Add quit system, call generate excuse on generate.
- * 
  * @author JRIngram
  * @version 23/04/2016
  *
