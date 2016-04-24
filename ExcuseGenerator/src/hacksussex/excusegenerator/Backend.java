@@ -83,10 +83,10 @@ public class Backend {
 				if(ranking > leastCommonWord.getFrequency()){
 					//Set it to be the new least common
 					leastCommonWord = rankedWord;
+					System.out.println(formattedWord + " is the least common word!");
 				}
 			}
 		}
-		
 		//If none of the user defined words were in the rankings list, use a random excuse
 		if(leastCommonWord.getFrequency() == 0){
 			response = randomExcuse();

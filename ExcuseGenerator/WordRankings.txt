@@ -107,7 +107,7 @@ through	112
 us	113	
 life	114	
 child	115	
-work	117	
+work	117	I can't work today as I'm suffering from chronic procrastination.
 down	118	
 may	119	
 after	120	
@@ -122,19 +122,19 @@ last	130
 ask	131	
 need	132	
 too	133	
-feel	134	
+feel	134	"No thanks, the only thing I want to feel is ur mum #rekt"
 three	135	
 state	137	
 never	138	
 become	139	
 between	140	
-high	141	
+high	141	I'm not into #420GetVaped but thanks anyway.
 really	142	
-something	143	
+something	143	"If by doing something, you mean anything, I'd like to do anything that doesn't involving being with you :)"
 most	144	
 another	145	
 much	146	
-family	147	
+family	147	"I would, but I hate them."
 own	148	
 leave	150	
 put	151	
@@ -147,21 +147,21 @@ why	158
 let	159	
 great	160	
 same	161	
-big	162	
+big	162	It might be a bit too big for me.
 group	163	
 begin	164	
 seem	165	
 country	166	
 help	167	
-talk	168	
+talk	168	"Unfortunately, I had my tongue removed."
 where	169	
 turn	170	
-problem	171	
+problem	171	"If you have n problems, I have 10n."
 every	172	
 start	173	
 hand	174	
 might	175	
-American	176	
+American	176	No.
 show	177	
 part	178	
 against	180	
@@ -175,7 +175,7 @@ company	189
 system	191	
 each	192	
 right	193	
-program	194	
+program	194	" I coded a sick program in HTML once, maybe I could help with your complex programming problem."
 hear	195	
 question	197	
 during	198	
