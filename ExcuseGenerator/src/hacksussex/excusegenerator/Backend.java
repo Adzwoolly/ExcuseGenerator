@@ -67,10 +67,10 @@ public class Backend {
 	public String getExcuse(String problem){
 		//Split the given sentence into an array of words
 		String[] words = problem.split(" ");
-		//Higher number is less common
-		int leastCommonRanking = 0;
-		String leastCommonWord = null;
+		//String leastCommonWord = null;
 		String response = null;
+		
+		Word leastCommonWord = new Word(0, response);
 		
 		//Loop through all words inputted by user, determining which is least common
 		for(String word : words){
@@ -80,17 +80,22 @@ public class Backend {
 			if(rankedWord != null){
 				Integer ranking = rankedWord.getFrequency();
 				//If this word is less common than the least common so far
-				if(ranking > leastCommonRanking){
+				if(ranking > leastCommonWord.getFrequency()){
 					//Set it to be the new least common
-					leastCommonRanking = ranking;
-					leastCommonWord = formattedWord;
+					leastCommonWord = rankedWord;
 				}
 			}
 		}
 		
 		//If none of the user defined words were in the rankings list, use a random excuse
-		if(leastCommonWord == null){
+		if(leastCommonWord.getFrequency() == 0){
 			response = randomExcuse();
+		} else{
+			if(leastCommonWord.getExcuse() != null){
+				response = leastCommonWord.getExcuse();
+			} else{
+				response = randomExcuse();
+			}
 		}
 		
 		System.out.println("Response: " + response);
