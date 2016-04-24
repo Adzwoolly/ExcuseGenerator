@@ -55,7 +55,14 @@ public class Backend {
 		//Initialise the array of random excuses with random excuses
 		randomExcuses = new String[]{"I would but, my cat ate my list of excuses, choked, and died.",
 				"As much as I love to, the reason I can't do that isn't you - it's me.",
-				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything."};
+				"It'd be great to do that - but I'm reading this really interesting blog post about how I keep making excuses for everything.",
+				"The idea of doing that is good, the idea of not doing that is 10 times better.",
+				"You deserve someone better than me.",
+				"I just don't feel the spark of doing that.",
+				"I mean I guess I could, but it doesn't mean I will.",
+				"I'm participating in the Rummikub world championships.",
+				"My dog ate my to-do so I have no clue what I'm doing then."				
+		};
 		
 	}
 	
